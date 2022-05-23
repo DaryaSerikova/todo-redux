@@ -1,6 +1,7 @@
 //actions
 
-// import { ADD_TODO, REMOVE_TODO } from '..actionTypes'
+let nextTodoId = 0;
+
 //типы Action'ов
 export const ADD_TODO = 'ADD_TODO'
 export const TOGGLE_TODO = 'TOGGLE_TODO'
@@ -14,14 +15,18 @@ export const VisibilityFilters = {
 }
 
 //Action Creators
-export function addTodo(text) {
-  return { type: ADD_TODO, text }
-}
+export const addTodo = (text) => ({
+  type: ADD_TODO, 
+  id: nextTodoId++,
+  text 
+});
 
-export function toggleTodo(index) {
-  return { type: TOGGLE_TODO, index }
-}
+export const setVisibilityFilter = (filter) => ({
+  type: SET_VISIBILITY_FILTER, 
+  filter 
+});
 
-export function setVisability(filter) {
-  return { type: SET_VISIBILITY_FILTER, filter }
-}
+export const toggleTodo =(id) => ({
+  type: TOGGLE_TODO, 
+  id
+});
